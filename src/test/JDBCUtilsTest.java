@@ -1,3 +1,5 @@
+import bean.User;
+import dao.UserDao_Imp;
 import jdbc.JDBCUtils;
 import org.junit.Test;
 
@@ -16,8 +18,44 @@ public class JDBCUtilsTest {
                 System.out.print(resultSet.getString("upass"));
                 System.out.println();
             }
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
+        } catch (SQLException se) {
+            se.printStackTrace();
         }
+    }
+
+    @Test
+    public void loginTest(){
+        UserDao_Imp userDao_imp = new UserDao_Imp();
+        User user = new User("admin","admin");
+        System.out.println(userDao_imp.login(user));
+    }
+
+    @Test
+    public void insertTest(){
+        UserDao_Imp userDao_imp = new UserDao_Imp();
+        User user = new User("金毛毛","jinmaomao");
+        System.out.println(userDao_imp.insert(user));
+    }
+
+    @Test
+    public void deleteTest(){
+        UserDao_Imp userDao_imp = new UserDao_Imp();
+        String uname = "金毛毛";
+        System.out.println(userDao_imp.delete(uname));
+    }
+
+    @Test
+    public void updateTest(){
+        UserDao_Imp userDao_imp = new UserDao_Imp();
+        User Testuser = new User("丽丽桑","lilisang", 2);
+        User user = new User("金毛毛","jinmaomaonb");
+        System.out.println(userDao_imp.update(user, Testuser, Testuser.getType()));
+    }
+
+    @Test
+    public void selectTest(){
+        UserDao_Imp userDao_imp = new UserDao_Imp();
+        String uname = "金毛毛";
+        System.out.println(userDao_imp.select(uname));
     }
 }

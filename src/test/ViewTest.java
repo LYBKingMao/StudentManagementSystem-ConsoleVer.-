@@ -16,6 +16,12 @@ public class ViewTest {
     }
 
     @Test
+    public void studentMenuTest(){
+        int choice = View.studentMenuView();
+        System.out.println(choice);
+    }
+
+    @Test
     public void addMenuTest(){
         User user = View.addMenuView();
         System.out.println(user.toString());
